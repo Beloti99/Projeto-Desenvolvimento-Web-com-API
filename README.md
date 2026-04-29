@@ -41,7 +41,7 @@ graph TD
 
 ## 📸 Capturas de Tela (Prints)
 
-![Página Inicial](https://prnt.sc/AqHLaGVVLCzr)
+![Página Inicial] https://prnt.sc/AqHLaGVVLCzr
 > A página inicial listando as plantas carregadas da API da Trefle.
 
 ![Página de Detalhes da Planta](https://prnt.sc/wxXMwj22w0ot)
