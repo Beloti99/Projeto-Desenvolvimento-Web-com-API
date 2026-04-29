@@ -1,6 +1,5 @@
 // src/services/api.js
 
-// ATENÇÃO: Cole o seu Token da Trefle na variável abaixo:
 const TREFLE_TOKEN = 'usr-ZBWbh3AIws-VOEK42k5IWk7F4AxW6Qw4BW9bixuYQpE';
 const BASE_URL = 'https://trefle.io/api/v1';
 
