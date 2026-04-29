@@ -76,21 +76,23 @@ export const fetchPlantas = async () => {
       'spathiphyllum', 'epipremnum', 'syngonium', 'tulip', 'lily', 'cedar'
     ];
 
-    const fetchPromises = queries.map(q =>
-      fetch(`${CORS_PROXY}${encodeURIComponent(`${BASE_URL}/plants/search?token=${TREFLE_TOKEN}&q=${q}`)}`)
-        .then(res => res.json())
-        .catch(() => ({ data: [] }))
-    );
-
-    const results = await Promise.all(fetchPromises);
-
-    // Junta todas as plantas de todas as buscas em uma única lista
+    // Fazemos as requisições em sequência para evitar erro 429 (Too Many Requests) nos proxies gratuitos
     let todasAsPlantas = [];
-    results.forEach(result => {
-      if (result && result.data) {
-        todasAsPlantas = [...todasAsPlantas, ...result.data];
+    for (const q of queries) {
+      try {
+        const res = await fetch(`${CORS_PROXY}${encodeURIComponent(`${BASE_URL}/plants/search?token=${TREFLE_TOKEN}&q=${q}`)}`);
+        if (res.ok) {
+          const result = await res.json();
+          if (result && result.data) {
+            todasAsPlantas = [...todasAsPlantas, ...result.data];
+          }
+        }
+      } catch (e) {
+        // Ignora erro dessa busca específica e continua
       }
-    });
+      // Pequeno atraso para não estourar o limite de requisições por segundo do proxy
+      await new Promise(resolve => setTimeout(resolve, 300));
+    }
 
     // Filtramos para ter no máximo 1 variedade por espécie (baseado nas duas primeiras palavras do nome científico)
     const especiesVistas = new Set();
