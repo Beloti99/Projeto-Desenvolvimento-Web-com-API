@@ -1,0 +1,100 @@
+{
+  "plantas": [
+    {
+      "id": "1",
+      "nome": "Costela-de-adão",
+      "nomeCientifico": "Monstera deliciosa",
+      "categoria": "Folhagens",
+      "tipo": "Folhagem",
+      "cicloDeVida": "Perene",
+      "rega": "Moderada",
+      "luz": "Meia-sombra",
+      "imagem": "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=800&q=80",
+      "descricao": "Planta tropical muito popular na decoração de interiores devido às suas folhas grandes e recortadas."
+    },
+    {
+      "id": "2",
+      "nome": "Espada-de-são-jorge",
+      "nomeCientifico": "Sansevieria trifasciata",
+      "categoria": "Folhagens",
+      "tipo": "Suculenta",
+      "cicloDeVida": "Perene",
+      "rega": "Baixa",
+      "luz": "Sombra a Sol Pleno",
+      "imagem": "https://images.unsplash.com/photo-1599009765270-176c11b0e515?auto=format&fit=crop&w=800&q=80",
+      "descricao": "Extremamente resistente, é ideal para iniciantes pois exige poucos cuidados e se adapta a diversos ambientes."
+    },
+    {
+      "id": "3",
+      "nome": "Ipê Amarelo",
+      "nomeCientifico": "Handroanthus albus",
+      "categoria": "Arvores",
+      "tipo": "Árvore",
+      "cicloDeVida": "Perene",
+      "rega": "Moderada",
+      "luz": "Sol Pleno",
+      "imagem": "https://images.unsplash.com/photo-1634213192027-2c9d7494a974?auto=format&fit=crop&w=800&q=80",
+      "descricao": "Árvore símbolo do Brasil, famosa por sua florada amarela exuberante durante o inverno."
+    },
+    {
+      "id": "4",
+      "nome": "Orquídea Phalaenopsis",
+      "nomeCientifico": "Phalaenopsis spp.",
+      "categoria": "Flores",
+      "tipo": "Epífita",
+      "cicloDeVida": "Perene",
+      "rega": "Moderada",
+      "luz": "Meia-sombra",
+      "imagem": "https://images.unsplash.com/photo-1595015792040-5b53e34b8c6e?auto=format&fit=crop&w=800&q=80",
+      "descricao": "Uma das orquídeas mais fáceis de cultivar em casa, com flores duradouras de diversas cores."
+    },
+    {
+      "id": "5",
+      "nome": "Samambaia Americana",
+      "nomeCientifico": "Nephrolepis exaltata",
+      "categoria": "Folhagens",
+      "tipo": "Folhagem",
+      "cicloDeVida": "Perene",
+      "rega": "Frequente",
+      "luz": "Sombra",
+      "imagem": "https://images.unsplash.com/photo-1597845341641-7ebcf13eec7e?auto=format&fit=crop&w=800&q=80",
+      "descricao": "Planta clássica para pendurar, gosta de muita umidade e não tolera sol direto."
+    },
+    {
+      "id": "6",
+      "nome": "Suculenta Echeveria",
+      "nomeCientifico": "Echeveria spp.",
+      "categoria": "Suculentas",
+      "tipo": "Suculenta",
+      "cicloDeVida": "Perene",
+      "rega": "Baixa",
+      "luz": "Sol Pleno",
+      "imagem": "https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?auto=format&fit=crop&w=800&q=80",
+      "descricao": "Plantas que armazenam água em suas folhas, perfeitas para ambientes ensolarados e pequenos espaços."
+    },
+    {
+      "id": "7",
+      "nome": "Buxinho",
+      "nomeCientifico": "Buxus sempervirens",
+      "categoria": "Arbustos",
+      "tipo": "Arbusto",
+      "cicloDeVida": "Perene",
+      "rega": "Moderada",
+      "luz": "Sol Pleno a Meia-sombra",
+      "imagem": "https://images.unsplash.com/photo-1610488616853-91ee73873919?auto=format&fit=crop&w=800&q=80",
+      "descricao": "Arbusto clássico no paisagismo, muito usado para formar cercas vivas e esculturas verdes (topiaria)."
+    },
+    {
+      "id": "8",
+      "nome": "Rosa",
+      "nomeCientifico": "Rosa spp.",
+      "categoria": "Flores",
+      "tipo": "Arbusto Florífero",
+      "cicloDeVida": "Perene",
+      "rega": "Moderada",
+      "luz": "Sol Pleno",
+      "imagem": "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=800&q=80",
+      "descricao": "A flor mais popular do mundo, necessita de podas regulares e boa insolação para florescer abundantemente."
+    }
+  ]
+}
