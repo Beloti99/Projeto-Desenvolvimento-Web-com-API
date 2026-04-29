@@ -2,9 +2,9 @@
 
 Bem-vindo ao **Guia de Plantas para Paisagismo**, uma aplicação desenvolvida em React para facilitar a busca e descoberta de plantas ideais para o seu ambiente. Este projeto foi desenvolvido como trabalho individual.
 
-## 🔗 Acesso Online
+## Acesso Online
 A aplicação está hospedada e disponível publicamente em:
-**[Substitua pelo link do Vercel/Netlify/GitHub Pages]**
+**(https://guiaplantas.netlify.app/)**
 
 ## 💻 Tecnologias e APIs Utilizadas
 - **React.js** (Biblioteca principal para construção da interface)
@@ -41,12 +41,10 @@ graph TD
 
 ## 📸 Capturas de Tela (Prints)
 
-*Coloque aqui as imagens do seu sistema funcionando*
-
-![Página Inicial](coloque-a-url-do-print-aqui.jpg)
+![Página Inicial](https://prnt.sc/AqHLaGVVLCzr)
 > A página inicial listando as plantas carregadas da API da Trefle.
 
-![Página de Detalhes da Planta](coloque-a-url-do-print-aqui.jpg)
+![Página de Detalhes da Planta](https://prnt.sc/wxXMwj22w0ot)
 > Página de detalhes gerada dinamicamente com base no `:id` da planta, contendo a descrição real traduzida dinamicamente da Wikipedia.
 
 ## 🚀 Como rodar o projeto localmente
@@ -55,7 +53,7 @@ Siga os passos abaixo para testar a aplicação em seu computador:
 
 1. **Clone o repositório:**
    ```bash
-   git clone <SEU-LINK-DO-GITHUB>
+   git clone <https://github.com/Beloti99/Projeto-Desenvolvimento-Web-com-API>
    cd guia-plantas
    ```
 
@@ -75,7 +73,7 @@ Siga os passos abaixo para testar a aplicação em seu computador:
 ## 🎓 Requisitos do Trabalho
 - [x] Aplicação em React com tema livre.
 - [x] Consumo e exibição de dados de uma API Externa (O projeto consome **3 APIs diferentes** integradas).
-- [ ] Hospedada e disponível online (Precisa subir no Vercel/Netlify).
+- [x] Hospedada e disponível online (Precisa subir no Vercel/Netlify).
 - [x] Mais de uma página interna usando rotas dinâmicas (`/plantas/:id` e `/categoria/:nome`).
 - [x] README com arquitetura, tecnologias, instruções e prints.
-- [ ] Código versionado no GitHub.
+- [x] Código versionado no GitHub.
