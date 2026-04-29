@@ -44,7 +44,7 @@ graph TD
 ![Página Inicial] https://prnt.sc/AqHLaGVVLCzr
 > A página inicial listando as plantas carregadas da API da Trefle.
 
-![Página de Detalhes da Planta](https://prnt.sc/wxXMwj22w0ot)
+![Página de Detalhes da Planta] https://prnt.sc/wxXMwj22w0ot
 > Página de detalhes gerada dinamicamente com base no `:id` da planta, contendo a descrição real traduzida dinamicamente da Wikipedia.
 
 ## 🚀 Como rodar o projeto localmente
