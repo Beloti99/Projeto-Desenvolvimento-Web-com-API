@@ -1,11 +1,11 @@
 // src/services/api.js
 
 // ATENÇÃO: Cole o seu Token da Trefle na variável abaixo:
-const TREFLE_TOKEN = 'usr-ZBWbh3AIws-VOEK42k5IWk7F4AxW6Qw4BW9bixuYQpE'; 
+const TREFLE_TOKEN = 'usr-ZBWbh3AIws-VOEK42k5IWk7F4AxW6Qw4BW9bixuYQpE';
 const BASE_URL = 'https://trefle.io/api/v1';
 
 // Usamos um proxy cors pois a Trefle API pode bloquear chamadas diretas do navegador (CORS)
-const CORS_PROXY = 'https://api.codetabs.com/v1/proxy?quest='; 
+const CORS_PROXY = 'https://api.codetabs.com/v1/proxy?quest=';
 
 const dicionarioPlantas = {
   'rose': 'Rosa', 'cactus': 'Cacto', 'succulent': 'Suculenta', 'fern': 'Samambaia',
@@ -24,15 +24,15 @@ const dicionarioPlantas = {
 const traduzirNome = (englishName) => {
   if (!englishName) return '';
   const lower = englishName.toLowerCase();
-  
+
   // Busca exata
   if (dicionarioPlantas[lower]) return dicionarioPlantas[lower];
-  
+
   // Busca parcial (se a palavra estiver contida)
   for (const [eng, pt] of Object.entries(dicionarioPlantas)) {
     if (lower.includes(eng)) return pt;
   }
-  
+
   // Se não achar tradução, retornamos vazio para não mostrar inglês
   return '';
 };
@@ -53,7 +53,7 @@ const mapTreflePlant = (p) => {
     categoria: getCategory(p.common_name, p.scientific_name),
     tipo: p.family || 'Planta',
     cicloDeVida: 'Perene', // Simplificado
-    rega: 'Moderada', 
+    rega: 'Moderada',
     luz: 'Meia-sombra',
     dificuldade: 'Média',
     petFriendly: false,
@@ -63,7 +63,7 @@ const mapTreflePlant = (p) => {
 };
 
 export const fetchPlantas = async () => {
-  if (TREFLE_TOKEN === 'COLE_SEU_TOKEN_AQUI') {
+  if (!TREFLE_TOKEN || TREFLE_TOKEN === 'COLE_SEU_TOKEN_AQUI') {
     console.error("TOKEN DA TREFLE NÃO CONFIGURADO");
     return [];
   }
@@ -75,15 +75,15 @@ export const fetchPlantas = async () => {
       'calathea', 'peperomia', 'begonia', 'orchid', 'rose', 'pine', 'oak',
       'spathiphyllum', 'epipremnum', 'syngonium', 'tulip', 'lily', 'cedar'
     ];
-    
-    const fetchPromises = queries.map(q => 
+
+    const fetchPromises = queries.map(q =>
       fetch(`${CORS_PROXY}${encodeURIComponent(`${BASE_URL}/plants/search?token=${TREFLE_TOKEN}&q=${q}`)}`)
         .then(res => res.json())
         .catch(() => ({ data: [] }))
     );
 
     const results = await Promise.all(fetchPromises);
-    
+
     // Junta todas as plantas de todas as buscas em uma única lista
     let todasAsPlantas = [];
     results.forEach(result => {
@@ -99,7 +99,7 @@ export const fetchPlantas = async () => {
     todasAsPlantas.forEach(p => {
       if (!p.image_url) return; // Retorna apenas as que têm imagem
       if (!p.scientific_name) return;
-      
+
       const nomeBase = p.scientific_name.split(' ').slice(0, 2).join(' ').toLowerCase();
       if (!especiesVistas.has(nomeBase)) {
         especiesVistas.add(nomeBase);
@@ -125,7 +125,7 @@ export const fetchPlantaById = async (id) => {
     }
     const json = await response.json();
     const p = json.data;
-    
+
     const nomeTraduzido = traduzirNome(p.common_name);
 
     let descricaoFinal = 'Uma belíssima planta disponível em nosso catálogo. Suas características únicas a tornam uma excelente escolha para complementar o seu ambiente. (Detalhes da Trefle API)';
@@ -167,7 +167,7 @@ export const fetchPlantaById = async (id) => {
       categoria: getCategory(p.common_name, p.scientific_name),
       tipo: p.family || 'Planta',
       cicloDeVida: p.duration ? p.duration.join(', ') : 'Perene',
-      rega: 'Moderada', 
+      rega: 'Moderada',
       luz: 'Meia-sombra',
       dificuldade: 'Média',
       petFriendly: false,
