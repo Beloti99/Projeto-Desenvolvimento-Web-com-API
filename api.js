@@ -5,7 +5,7 @@ const TREFLE_TOKEN = 'usr-ZBWbh3AIws-VOEK42k5IWk7F4AxW6Qw4BW9bixuYQpE';
 const BASE_URL = 'https://trefle.io/api/v1';
 
 // Usamos um proxy cors pois a Trefle API pode bloquear chamadas diretas do navegador (CORS)
-const CORS_PROXY = 'https://api.codetabs.com/v1/proxy?quest=';
+const CORS_PROXY = 'https://cors.eu.org/';
 
 const dicionarioPlantas = {
   'rose': 'Rosa', 'cactus': 'Cacto', 'succulent': 'Suculenta', 'fern': 'Samambaia',
