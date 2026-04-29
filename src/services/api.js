@@ -5,7 +5,7 @@ const TREFLE_TOKEN = 'usr-ZBWbh3AIws-VOEK42k5IWk7F4AxW6Qw4BW9bixuYQpE';
 const BASE_URL = 'https://trefle.io/api/v1';
 
 // Usamos um proxy cors pois a Trefle API pode bloquear chamadas diretas do navegador (CORS)
-const CORS_PROXY = 'https://api.codetabs.com/v1/proxy?quest=';
+const CORS_PROXY = 'https://cors.eu.org/';
 
 const dicionarioPlantas = {
   'rose': 'Rosa', 'cactus': 'Cacto', 'succulent': 'Suculenta', 'fern': 'Samambaia',
@@ -63,7 +63,7 @@ const mapTreflePlant = (p) => {
 };
 
 export const fetchPlantas = async () => {
-  if (TREFLE_TOKEN === 'usr-ZBWbh3AIws-VOEK42k5IWk7F4AxW6Qw4BW9bixuYQpE') {
+  if (!TREFLE_TOKEN || TREFLE_TOKEN === 'COLE_SEU_TOKEN_AQUI') {
     console.error("TOKEN DA TREFLE NÃO CONFIGURADO");
     return [];
   }
@@ -76,21 +76,23 @@ export const fetchPlantas = async () => {
       'spathiphyllum', 'epipremnum', 'syngonium', 'tulip', 'lily', 'cedar'
     ];
 
-    const fetchPromises = queries.map(q =>
-      fetch(`${CORS_PROXY}${encodeURIComponent(`${BASE_URL}/plants/search?token=${TREFLE_TOKEN}&q=${q}`)}`)
-        .then(res => res.json())
-        .catch(() => ({ data: [] }))
-    );
-
-    const results = await Promise.all(fetchPromises);
-
-    // Junta todas as plantas de todas as buscas em uma única lista
+    // Fazemos as requisições em sequência para evitar erro 429 (Too Many Requests) nos proxies gratuitos
     let todasAsPlantas = [];
-    results.forEach(result => {
-      if (result && result.data) {
-        todasAsPlantas = [...todasAsPlantas, ...result.data];
+    for (const q of queries) {
+      try {
+        const res = await fetch(`${CORS_PROXY}${encodeURIComponent(`${BASE_URL}/plants/search?token=${TREFLE_TOKEN}&q=${q}`)}`);
+        if (res.ok) {
+          const result = await res.json();
+          if (result && result.data) {
+            todasAsPlantas = [...todasAsPlantas, ...result.data];
+          }
+        }
+      } catch (e) {
+        // Ignora erro dessa busca específica e continua
       }
-    });
+      // Pequeno atraso para não estourar o limite de requisições por segundo do proxy
+      await new Promise(resolve => setTimeout(resolve, 300));
+    }
 
     // Filtramos para ter no máximo 1 variedade por espécie (baseado nas duas primeiras palavras do nome científico)
     const especiesVistas = new Set();
